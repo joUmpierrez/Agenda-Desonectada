@@ -54,7 +54,7 @@ namespace UI
                 Console.ReadKey();
                 */
                 #endregion
-
+                    
                 #region Menu
                 Boolean salir = false;
                 do
@@ -86,7 +86,7 @@ namespace UI
                                 {
                                     for (int i = 1; i < rowCollection.Count; i++)
                                     {
-                                        Console.WriteLine(i + " " + dataSet.Tables["Agendas"].Rows[i]["nombre"]);
+                                        Console.WriteLine(i + " --- " + dataSet.Tables["Agendas"].Rows[i]["nombre"]);
                                     }
                                     Console.WriteLine("");
                                     Console.WriteLine("Ingrese cualquier cosa para salir");
@@ -100,7 +100,24 @@ namespace UI
                                 DataTable Agendas = dataSet.Tables["Agendas"];
                                 DataRow row = Agendas.NewRow();
                                 Console.WriteLine("Ingrese un Nombre para su Agenda");
-                                row["nombre"] = Console.ReadLine();
+
+                                String nombre;
+                                Boolean existeNombre = false;
+                                do
+                                {
+                                    nombre = Console.ReadLine();
+                                    Console.WriteLine("");
+                                    foreach (DataRow rowBuscar in rowCollection)
+                                    {
+                                        if (rowBuscar["nombre"].ToString() == nombre)
+                                        {
+                                            existeNombre = true;
+                                            Console.WriteLine("Ese nombre ya existe, ingrese uno nuevo");
+                                        }
+                                    }
+                                } while (existeNombre);
+
+                                row["nombre"] = nombre;
                                 row["fechaCreacion"] = DateTime.Now.Date;
                                 row["activo"] = true;
                                 Agendas.Rows.Add(row);
@@ -110,11 +127,11 @@ namespace UI
                                 break;
                             case 3:
                                 Console.Clear();
-                                #region Modificar Agendas
+                                #region Modificar Fila
                                 #region Ver Agendas
                                 for (int i = 1; i < rowCollection.Count; i++)
                                 {
-                                    Console.WriteLine(i + " " + dataSet.Tables["Agendas"].Rows[i]["nombre"]);
+                                    Console.WriteLine(i + " --- " + dataSet.Tables["Agendas"].Rows[i]["nombre"]);
                                 }
                                 #endregion
 
@@ -127,12 +144,29 @@ namespace UI
 
                                     DataRow selectedRowUpdate = rowCollection[opcionModificar];
 
+                                    Console.Clear();
                                     Console.WriteLine("El nombre actual es " + selectedRowUpdate["nombre"]);
                                     Console.WriteLine("");
                                     Console.WriteLine("Ingrese un Nuevo nombre");
 
+                                    String nombreNuevo;
+                                    Boolean existe = false;
+                                    do
+                                    {
+                                        nombreNuevo = Console.ReadLine();
+                                        Console.WriteLine("");
+                                        foreach (DataRow rowBuscar in rowCollection)
+                                        {
+                                            if (rowBuscar["nombre"].ToString() == nombreNuevo)
+                                            {
+                                                existe = true;
+                                                Console.WriteLine("Ese nombre ya existe, ingrese uno nuevo");
+                                            }
+                                        }
+                                    } while (existe);
+                                    
                                     selectedRowUpdate.BeginEdit();
-                                    selectedRowUpdate["nombre"] = Console.ReadLine();
+                                    selectedRowUpdate["nombre"] = nombreNuevo;
                                     selectedRowUpdate.EndEdit();
 
                                     dataAdapter.Update(dataSet, "Agendas");
@@ -143,11 +177,11 @@ namespace UI
                                 break;
                             case 4:
                                 Console.Clear();
-                                #region Borrar Agendas
+                                #region Borrar Fila
                                 #region Ver Agendas
                                 for (int i = 1; i < rowCollection.Count; i++)
                                 {
-                                    Console.WriteLine(i + " " + dataSet.Tables["Agendas"].Rows[i]["nombre"]);
+                                    Console.WriteLine(i + " --- " + dataSet.Tables["Agendas"].Rows[i]["nombre"]);
                                 }
                                 #endregion
 
