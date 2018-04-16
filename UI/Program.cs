@@ -10,7 +10,7 @@ namespace UI
 {
     class Program
     {
-        private const String connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=BaseDeDatos-Agenda;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        private const String connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Programacion3-Agenda;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
         static void Main(string[] args)
         {
@@ -102,9 +102,10 @@ namespace UI
                                 Console.WriteLine("Ingrese un Nombre para su Agenda");
 
                                 String nombre;
-                                Boolean existeNombre = false;
+                                Boolean existeNombre;
                                 do
                                 {
+                                    existeNombre = false;
                                     nombre = Console.ReadLine();
                                     Console.WriteLine("");
                                     foreach (DataRow rowBuscar in rowCollection)
@@ -112,8 +113,12 @@ namespace UI
                                         if (rowBuscar["nombre"].ToString() == nombre)
                                         {
                                             existeNombre = true;
-                                            Console.WriteLine("Ese nombre ya existe, ingrese uno nuevo");
                                         }
+                                    }
+
+                                    if (existeNombre)
+                                    {
+                                        Console.WriteLine("Ese nombre ya existe, ingrese uno nuevo");
                                     }
                                 } while (existeNombre);
 
