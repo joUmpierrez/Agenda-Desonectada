@@ -51,6 +51,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Programacion3_Agenda_DataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Programacion3_Agenda_DataSet_CEI.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Programacion3_Agenda_DataSet_CEI.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -70,6 +75,17 @@
     </None>
     <None Include="Programacion3_Agenda_DataSet.xss">
       <DependentUpon>Programacion3_Agenda_DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Programacion3_Agenda_DataSet_CEI.xsc">
+      <DependentUpon>Programacion3_Agenda_DataSet_CEI.xsd</DependentUpon>
+    </None>
+    <None Include="Programacion3_Agenda_DataSet_CEI.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Programacion3_Agenda_DataSet_CEI.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Programacion3_Agenda_DataSet_CEI.xss">
+      <DependentUpon>Programacion3_Agenda_DataSet_CEI.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

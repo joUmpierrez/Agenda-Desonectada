@@ -13,12 +13,15 @@ namespace UI
         static void Main(string[] args)
         {
             // Trae el Dataset
-            Programacion3_Agenda_DataSet dataSet = new Programacion3_Agenda_DataSet();
+            // Programacion3_Agenda_DataSet dataSet = new Programacion3_Agenda_DataSet();
+            Programacion3_Agenda_DataSet_CEI dataSet = new Programacion3_Agenda_DataSet_CEI();
 
             // Crea una row para agendas
-            Programacion3_Agenda_DataSetTableAdapters.AgendasTableAdapter agendasTableAdapter = new Programacion3_Agenda_DataSetTableAdapters.AgendasTableAdapter();
-            Programacion3_Agenda_DataSet.AgendasRow agendasRow = dataSet.Agendas.NewAgendasRow();
-            agendasRow.nombre = "Mujica";
+            //Programacion3_Agenda_DataSetTableAdapters.AgendasTableAdapter agendasTableAdapter = new Programacion3_Agenda_DataSetTableAdapters.AgendasTableAdapter();
+            Programacion3_Agenda_DataSet_CEITableAdapters.AgendasTableAdapter agendasTableAdapter = new Programacion3_Agenda_DataSet_CEITableAdapters.AgendasTableAdapter();
+            //Programacion3_Agenda_DataSet.AgendasRow agendasRow = dataSet.Agendas.NewAgendasRow();
+            Programacion3_Agenda_DataSet_CEI.AgendasRow agendasRow = dataSet.Agendas.NewAgendasRow();
+            agendasRow.nombre = "Pepe";
             agendasRow.fechaCreacion = DateTime.Today.Date;
             agendasRow.activo = true;
             dataSet.Agendas.Rows.Add(agendasRow);
